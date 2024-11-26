@@ -20,6 +20,9 @@ public class Rating {
     @Column (nullable = false)
     private Float rating;
 
+    @Column(length = 1000)
+    private String review;
+
     @Column(name="date_posted", nullable = false)
     private LocalDate date;
 }
