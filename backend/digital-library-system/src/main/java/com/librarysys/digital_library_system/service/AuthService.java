@@ -30,11 +30,8 @@ public class AuthService {
     public User register(RegisterRequestDTO input) {
         User user = new User();
         user.setUsername(input.getUsername());
-        user.setPassword(passwordEncoder.encode(input.getPassword()));
-        user.setFirstName(input.getFirstName());
-        user.setLastName(input.getLastName());
         user.setEmail(input.getEmail());
-        user.setPhone(input.getPhone());
+        user.setPassword(passwordEncoder.encode(input.getPassword()));
 
         return userRepository.save(user);
     }
