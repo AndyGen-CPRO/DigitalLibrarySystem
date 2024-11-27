@@ -1,0 +1,74 @@
+/* Main container */
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2D1737; 
+    color: #FFFFFF; 
+  }
+  
+  .profile-container {
+    display: flex;
+    background-color: #3E205B; 
+    padding: 2rem;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Profile image */
+  .profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #F5C81A;
+    margin-right: 2rem;
+  }
+  
+  /* Profile information */
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-section {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .profile-section input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  input:disabled {
+    background-color: #5A3D70; 
+    color: #BBBBBB; 
+  }
+  
+  /* Edit button */
+  .edit-btn {
+    background-color: #F5C81A; 
+    color: #2D1737; 
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn:hover {
+    background-color: #FFD700; 
+  }
+  
