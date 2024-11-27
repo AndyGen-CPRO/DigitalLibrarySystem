@@ -34,7 +34,6 @@ public class BookService {
             book.setAuthor(newBookData.getAuthor());
             book.setGenre(newBookData.getGenre());
             book.setPublicationYear(newBookData.getPublicationYear());
-            book.setRating(newBookData.getRating());
             return bookRepository.save(book);
         }
         return null;  // Handle error case (e.g., throw custom exception)

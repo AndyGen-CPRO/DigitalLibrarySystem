@@ -1,5 +1,8 @@
 package com.librarysys.digital_library_system.advice;
 
+import com.librarysys.digital_library_system.model.Book;
+import com.librarysys.digital_library_system.model.User;
+
 import java.time.LocalDate;
 
 public class CustomException extends RuntimeException {
@@ -14,11 +17,11 @@ public class CustomException extends RuntimeException {
         return errorCode;
     }
 
-    public static CustomException invalidUserId(Integer user_id) {
+    public static CustomException invalidUserId(User user_id) {
         return new CustomException("User ID {" + user_id + "} is not valid. User ID can not be 0", "INVALID_USER_ID");
     }
 
-    public static CustomException invalidBookId(Integer book_id) {
+    public static CustomException invalidBookId(Book book_id) {
         return new CustomException("Book ID {" + book_id + "} is not valid. Book ID can not be 0", "INVALID_BOOK_ID");
     }
 

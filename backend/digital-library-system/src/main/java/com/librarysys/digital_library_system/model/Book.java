@@ -16,19 +16,17 @@ public class Book {
     private String author;
     private int publicationYear;
     private String genre;
-    private double rating;
 
     // Default constructor (required by JPA)
     public Book() {
     }
 
     // Parameterized constructor
-    public Book(String title, String author, int publicationYear, String genre, double rating) {
+    public Book(String title, String author, int publicationYear, String genre) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.genre = genre;
-        this.rating = rating;
     }
 
     // Getters and setters
@@ -70,13 +68,5 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 }

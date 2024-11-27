@@ -16,11 +16,11 @@ public class RatingService {
     private RatingRepository ratingRepository;
 
     public Rating saveRating(Rating rating) {
-        if (rating.getUserId() == 0) {
-            throw CustomException.invalidUserId(rating.getUserId());
+        if (rating.getUser() == null) {
+            throw CustomException.invalidUserId(rating.getUser());
         }
-        if (rating.getBookId() == 0) {
-            throw CustomException.invalidBookId(rating.getBookId());
+        if (rating.getBook() == null) {
+            throw CustomException.invalidBookId(rating.getBook());
         }
         if (rating.getRating() < 0.5 || rating.getRating() > 5) {
             throw CustomException.invalidRating(rating.getRating());
@@ -44,10 +44,10 @@ public class RatingService {
         Rating existingRating = ratingRepository.findById(id)
                 .orElseThrow(() -> CustomException.ratingIdNotFound(id));
 
-        if(rating.getUserId() != null && !rating.getUserId().equals(existingRating.getUserId())) {
+        if(rating.getUser() != null && !rating.getUser().equals(existingRating.getUser())) {
             throw CustomException.immutableUserId();
         }
-        if(rating.getBookId() != null && !rating.getBookId().equals(existingRating.getBookId())) {
+        if(rating.getBook() != null && !rating.getBook().equals(existingRating.getBook())) {
             throw CustomException.immutableBookId();
         }
         if (rating.getRating() < 0.5 || rating.getRating() > 5) {

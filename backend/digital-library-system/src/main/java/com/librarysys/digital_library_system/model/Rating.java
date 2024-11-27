@@ -9,13 +9,15 @@ import java.time.LocalDate;
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ratingId;
+    private Integer id;
 
-    @Column (updatable = false, nullable = false)
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn (name="user_id", updatable = false, nullable = false)
+    private User user;
 
-    @Column (updatable = false, nullable = false)
-    private Integer bookId;
+    @ManyToOne
+    @JoinColumn (name="book_id", updatable = false, nullable = false)
+    private Book book;
 
     @Column (nullable = false)
     private Float rating;
