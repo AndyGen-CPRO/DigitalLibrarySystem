@@ -1,15 +1,15 @@
-/* Overall page styling */
+/* Main login page styling */
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #2D1737; /* Dark purple background */
+    background-color: #2D1737; 
   }
   
-  /* Container for the login elements */
+  /* Container for the form and buttons */
   .login-container {
-    background-color: #3E205B; 
+    background-color: #3E205B;
     padding: 2rem;
     border-radius: 10px;
     width: 400px;
@@ -17,6 +17,11 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
+  .text p {
+    color:  #F5C81A;
+
+  }
+
   /* Logo styling */
   .logo {
     max-width: 150px;
@@ -38,7 +43,7 @@
     width: 100%;
     padding: 0.8rem;
     margin-top: 1rem;
-    background-color: #F5C81A; 
+    background-color: #F5C81A;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -48,7 +53,7 @@
   }
   
   .login-btn:hover {
-    background-color: #FFD700;
+    background-color: #FFD700; 
   }
   
   /* Facebook button */
@@ -85,5 +90,21 @@
   
   .btn-google:hover {
     background-color: #c4372e;
+  }
+  
+  .register-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #FFFFFF;
+  }
+  
+  .register-link a {
+    color: #F5C81A; 
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
   }
   
