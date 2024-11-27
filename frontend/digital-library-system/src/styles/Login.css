@@ -1,0 +1,89 @@
+/* Overall page styling */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2D1737; /* Dark purple background */
+  }
+  
+  /* Container for the login elements */
+  .login-container {
+    background-color: #3E205B; 
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Logo styling */
+  .logo {
+    max-width: 150px;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Input fields */
+  .login-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Login button */
+  .login-btn {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    background-color: #F5C81A; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2D1737; 
+  }
+  
+  .login-btn:hover {
+    background-color: #FFD700;
+  }
+  
+  /* Facebook button */
+  .btn-facebook {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background-color: #4267B2; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btn-facebook:hover {
+    background-color: #365899;
+  }
+  
+  /* Google button */
+  .btn-google {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background-color: #DB4437; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btn-google:hover {
+    background-color: #c4372e;
+  }
+  

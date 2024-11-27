@@ -1,0 +1,57 @@
+.about-page {
+    display: flex;
+    background-color: #2D1737; 
+    color: #FFFFFF;
+    height: 100vh;
+  }
+  
+  .about-sidebar {
+    width: 15%;
+    background-color: #2D1737; 
+    padding: 1rem;
+    margin: 1rem;
+    border-right: 3px solid #F5C81A;
+  }
+  
+  .about-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-sidebar li {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    font-size: 1.5em;
+  }
+  
+  .about-sidebar a {
+    text-decoration: none;
+    color: #F5C81A;
+    font-weight: bold;
+    padding: 0.5rem;
+    display: block;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .about-sidebar a:hover {
+    border-left: 3px solid #F5C81A;
+    background-color: #2D1737; 
+  }
+  
+  .about-content {
+    width: 80%;
+    padding: 2rem;
+    text-align: left;
+  }
+  
+  .about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  
