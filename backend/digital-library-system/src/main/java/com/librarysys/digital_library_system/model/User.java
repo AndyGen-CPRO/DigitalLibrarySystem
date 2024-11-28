@@ -24,15 +24,9 @@ public class User implements UserDetails {
     @NotBlank(message = "Password is required")
     private String password;
 
-    private String firstName;
-
-    private String lastName;
-
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is required")
     private String email;
-
-    private String phone;
 
     private String role = "user";
 

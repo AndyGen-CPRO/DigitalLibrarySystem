@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import BrowseBooks from './pages/BrowseBooks';
 import Profile from './pages/Profile';
 import Register from './pages/Registration'; 
-import { getToken, getRole, getLoggedUsername } from './utils/auth';
+import { getToken, getRole, getLoggedUsername, removeToken, removeRole, removeLoggedUsername } from './utils/auth';
 import './App.css';
 
 const App = () => {
@@ -36,7 +36,10 @@ const App = () => {
     setUserToken(null);
     setUserRole("");
     setUsername("");
-    localStorage.removeItem("token");
+    
+    removeToken();
+    removeRole();
+    removeLoggedUsername();
   };
 
   return (

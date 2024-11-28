@@ -19,6 +19,7 @@ const Navbar = ({ userToken, userRole, username, onLogout }) => {
         : (
           <>
             <li>Welcome, {username}</li>
+            {userRole === "admin" && <li>Admin Dashboard</li>}
             <li onClick={onLogout}>Log Out</li>
           </>
         )}
