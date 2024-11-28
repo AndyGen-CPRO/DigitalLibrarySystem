@@ -34,7 +34,7 @@ public class User implements UserDetails {
 
     private String phone;
 
-    private String role;
+    private String role = "user";
 
     @Override
     public boolean isAccountNonExpired() {

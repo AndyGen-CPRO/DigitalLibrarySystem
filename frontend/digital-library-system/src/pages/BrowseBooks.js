@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/BrowseBooks.css'; 
+import { useNavigate } from 'react-router-dom';
+import { getToken } from '../utils/auth';
 
 const books = [
   { title: "Java Programming", author: "Jen Can", rating: 5, image: "path/to/image1.jpg" },
@@ -11,6 +13,15 @@ const books = [
 ];
 
 const BrowseBooks = () => {
+  const navigate = useNavigate();
+  const token = getToken();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+      return;
+    }
+  })
   return (
     <div className="browse-books">
       <div className="sidebar">

@@ -1,11 +1,11 @@
 import React, { useState }  from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
 import axios from 'axios';
-import { setToken } from '../utils/auth';
+import { setToken, setRole, setLoggedUsername } from '../utils/auth';
 import '../styles/Login.css';
 import logo from '../assets/ebookhub.png';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -15,10 +15,13 @@ const Login = () => {
     e.preventDefault();
     try {
         const response = await axios.post("http://localhost:8081/auth/login", { username, password });
-        const { token } = response.data;
+        const { token, role, username: responseName } = response.data;
         setToken(token);
-        console.log(token);
+        setRole(role);
+        setLoggedUsername(responseName);
+        onLogin(token, role, username);
         setMessage("Log in successful.");
+        navigate("/browse-books");
     } catch (error) {
         setMessage("Log in Failed. Please try again.")
     }

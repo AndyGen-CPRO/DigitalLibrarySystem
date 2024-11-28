@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,31 +7,59 @@ import Login from './pages/Login';
 import BrowseBooks from './pages/BrowseBooks';
 import Profile from './pages/Profile';
 import Register from './pages/Registration'; 
+import { getToken, getRole, getLoggedUsername } from './utils/auth';
 import './App.css';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userToken, setUserToken] = useState(null);
+  const [userRole, setUserRole] = useState("");
+  const [username, setUsername] = useState("");
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      const role = getRole();
+      const name = getLoggedUsername();
+      setUserToken(token);
+      setUserRole(role);
+      setUsername(name);
+    }
+  }, []);
+
+  const handleLogin = (token, role, username) => {
+    setUserToken(token);
+    setUserRole(role);
+    setUsername(username);
+  };
+
+  const handleLogout = () => {
+    setUserToken(null);
+    setUserRole("");
+    setUsername("");
+    localStorage.removeItem("token");
   };
 
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar 
+         userToken={userToken} 
+         userRole={userRole} 
+         username={username} 
+         onLogout={handleLogout} 
+        />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/browse-books"
-            element={isLoggedIn ? <BrowseBooks /> : <Navigate to="/login" />}
+            element={<BrowseBooks />}
           />
           <Route path="/register" element={<Register />} />
           <Route
             path="/profile"
-            element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+            element={<Profile />}
           />
         </Routes>
       </div>

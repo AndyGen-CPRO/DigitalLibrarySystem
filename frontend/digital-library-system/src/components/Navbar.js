@@ -1,8 +1,7 @@
-import React from 'react';
 import '../styles/Navbar.css';
 import logo from '../assets/ebookhub.png';
 
-const Navbar = () => {
+const Navbar = ({ userToken, userRole, username, onLogout }) => {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -12,7 +11,17 @@ const Navbar = () => {
         <li><a href="/">home</a></li>
         <li><a href="/about">about</a></li>
         <li><a href="#contact">contact</a></li>
-        <li><a href="login/">login</a></li>
+        {!userToken ? (
+          <>
+            <li><a href="login/">login</a></li>
+          </>
+        )
+        : (
+          <>
+            <li>Welcome, {username}</li>
+            <li onClick={onLogout}>Log Out</li>
+          </>
+        )}
       </ul>
     </nav>
   );
