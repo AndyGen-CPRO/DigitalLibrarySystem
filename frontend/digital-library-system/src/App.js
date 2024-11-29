@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './pages/About';
@@ -8,7 +8,10 @@ import BrowseBooks from './pages/BrowseBooks';
 import Profile from './pages/Profile';
 import Register from './pages/Registration'; 
 import { getToken, getRole, getLoggedUsername, removeToken, removeRole, removeLoggedUsername } from './utils/auth';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 const App = () => {
   const [userToken, setUserToken] = useState(null);

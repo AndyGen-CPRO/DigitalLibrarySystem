@@ -6,7 +6,6 @@ import com.librarysys.digital_library_system.model.User;
 import com.librarysys.digital_library_system.responses.LoginResponse;
 import com.librarysys.digital_library_system.service.AuthService;
 import com.librarysys.digital_library_system.service.JwtService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

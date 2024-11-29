@@ -1,0 +1,10 @@
+:root {
+    --bs-primary: #3E205B; 
+    --bs-secondary: #F5C81A; 
+  }
+  
+  .btn-primary {
+    background-color: var(--bs-primary) !important;
+    color: #FFFFFF !important;
+  }
+  
