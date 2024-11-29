@@ -1,9 +1,9 @@
 :root {
-  --bg-custom: #2d1737; /* Background color */
-  --text-custom: #ffffff; /* Main text color */
-  --text-highlight: #f5c81a; /* Highlight color */
-  --btn-highlight-bg: #f5c81a; /* Button background */
-  --btn-highlight-text: #2d1737; /* Button text color */
+  --bg-custom: #2d1737; 
+  --text-custom: #ffffff; 
+  --text-highlight: #f5c81a; 
+  --btn-highlight-bg: #f5c81a; 
+  --btn-highlight-text: #2d1737; 
 }
 
 .navbar {
@@ -11,11 +11,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: var(--bg-custom) !important; /* Custom background */
+  background-color: #2d1737 !important;
 }
 
 .navbar .logo img {
-  max-width: 50%; /* Adjust logo size */
+  max-width: 50%; 
   height: auto;
 }
 
