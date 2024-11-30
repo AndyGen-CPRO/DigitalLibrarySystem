@@ -1,22 +1,31 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Hero.css';
-import homeImage from '../assets/home_image01.png'; 
+import homeImage from '../assets/home_image01.png';
 
 const Hero = () => {
   return (
-    <section className="hero">
-      <div className="hero-text">
-        <h1>
-          Explore Boundless <span>Knowledge</span> and Find  
-          Joy in Every <span>Read</span>
-        </h1>
-        <p>Your gateway to digital reading</p>
-        <button>Learn More</button>
+    <div className="container-fluid bg-custom text-white py-5">
+      <div className="row align-items-center">
+        <div className="col-md-8 text-center text-md-middle">
+          <h1 class="hero-text">
+            Explore Boundless <span className="text-warning">Knowledge</span> and Find  
+            Joy in Every <span className="text-warning">Read</span>
+          </h1>
+          <p>Your gateway to digital reading</p>
+          <button className="btn btn-warning text-dark px-4 py-2">
+            Learn More
+          </button>
+        </div>
+        <div className="col-md-4 text-center">
+          <img
+            src={homeImage}
+            alt="Reading Illustration"
+            className="img-fluid" width="400" height="500" 
+          />
+        </div>
       </div>
-      <div className="hero-image">
-        <img src={homeImage} alt="Reading Illustration" />
-      </div>
-    </section>
+    </div>
   );
 };
 

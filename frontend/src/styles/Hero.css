@@ -1,33 +1,51 @@
+/* Hero Section Styling */
+:root {
+  --bg-custom: #2d1737; /* Background color */
+  --text-custom: #ffffff; /* Main text color */
+  --text-highlight: #f5c81a; /* Highlight color */
+  --btn-highlight-bg: #f5c81a; /* Button background */
+  --btn-highlight-text: #2d1737; /* Button text color */
+}
+
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    background-color: #2d1737;
-    color: #fff;
-  }
-  
-  .hero-text h1 {
-    font-size: 3.5rem;
-    text-align: left;
-    margin-left: 15%;
-  }
-  
-  .hero-text span {
-    color: #f5c81a;
-  }
-  
-  .hero-image img {
-    max-width: 50%;
-    height: auto;
-  }
-  
-  button {
-    background-color: #f5c81a;
-    color: #2d1737;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #2d1737 !important;
+  color: #fff !important;
+}
+
+.hero-text h1 {
+  font-size: 5.5rem !important;
+  text-align: center;
+  margin: 15%;
+}
+
+.hero-text span {
+  color: #f5c81a !important; /* Force custom color for spans */
+}
+
+.hero-image img {
+  max-width: 80%;
+  height: auto;
+}
+
+button {
+  background-color: #f5c81a !important;
+  color: #2d1737 !important;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3E205B !important;
+  color: #fff !important;
+}
+
+
+
+
+
