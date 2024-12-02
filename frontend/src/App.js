@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AdminDashboard from './pages/AdminDashboard';
 import AddBook from './pages/AddBook';
+import BookList from './pages/BookList';
 
 
 const App = () => {
@@ -71,6 +72,10 @@ const App = () => {
           <Route
             path="/add-book"
             element={<AddBook />}
+          />
+          <Route
+            path="/book-list"
+            element={<BookList />}
           />
           <Route path="/register" element={<Register />} />
           <Route

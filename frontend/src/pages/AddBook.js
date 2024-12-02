@@ -55,13 +55,14 @@ const AddBook = () => {
     };
 
     return (
-        <div>
-            <h1>Add Book</h1>
-            {message && <p>{message}</p>}
+        <div className="add-book-form">
+            <h2>Add Book</h2>
+            {message && <p className="message">{message}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Title:</label>
+                <div className="form-group">
+                    <label htmlFor="title">Title:</label>
                     <input
+                        id="title"
                         type="text"
                         placeholder="Enter book title"
                         value={title}
@@ -69,9 +70,10 @@ const AddBook = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label>Author:</label>
+                <div className="form-group">
+                    <label htmlFor="author">Author:</label>
                     <input
+                        id="author"
                         type="text"
                         placeholder="Enter author's name"
                         value={author}
@@ -79,9 +81,10 @@ const AddBook = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label>Publication Year:</label>
+                <div className="form-group">
+                    <label htmlFor="publicationYear">Publication Year:</label>
                     <DatePicker
+                        id="publicationYear"
                         selected={publicationYear}
                         onChange={(date) => setPublicationYear(date)}
                         dateFormat="yyyy"
@@ -89,9 +92,10 @@ const AddBook = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label>Genre:</label>
+                <div className="form-group">
+                    <label htmlFor="genre">Genre:</label>
                     <input
+                        id="genre"
                         type="text"
                         placeholder="Enter genre"
                         value={genre}
