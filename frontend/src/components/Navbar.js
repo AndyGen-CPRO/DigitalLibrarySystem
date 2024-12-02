@@ -50,7 +50,9 @@ const Navbar = ({ userToken, userRole, username, onLogout }) => {
               <>
                 <li className="nav-item nav-link">Welcome, {username}</li>
                 {userRole === 'admin' && (
-                  <li className="nav-item nav-link">Admin Dashboard</li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/admin-dashboard">Admin Dashboard</a>
+                  </li>
                 )}
                 <li className="nav-item nav-link" onClick={onLogout}>
                   Log Out
