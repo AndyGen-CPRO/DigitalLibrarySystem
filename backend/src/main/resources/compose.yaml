@@ -4,8 +4,6 @@ services:
     image: 'mysql:latest'
     environment:
       - 'MYSQL_DATABASE=librarydb'
-      - 'MYSQL_PASSWORD=Abcd1234'
-      - 'MYSQL_ROOT_PASSWORD=Abcd1234'
-      - 'MYSQL_USER=root'
+      - 'MYSQL_ROOT_PASSWORD=!@i57qrjbb7rXK'  # Add this line
     ports:
       - '3306:3306'
