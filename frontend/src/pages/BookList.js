@@ -91,6 +91,8 @@ const BookList = () => {
           <option value="author">Author</option>
           <option value="publicationYear">Year</option>
           <option value="genre">Genre</option>
+          <option value="bookDescription">Description</option>
+          <option value="bookPrice">Price</option>
         </select>
 
         <input
@@ -110,6 +112,8 @@ const BookList = () => {
               <th onClick={() => handleSort('author')}>Author</th>
               <th onClick={() => handleSort('publicationYear')}>Year</th>
               <th onClick={() => handleSort('genre')}>Genre</th>
+              <th onClick={() => handleSort('bookDescription')}>Description</th>
+              <th onClick={() => handleSort('bookPrice')}>Price</th>
             </tr>
           </thead>
           <tbody>
@@ -120,6 +124,8 @@ const BookList = () => {
                 <td>{book.author}</td>
                 <td>{book.publicationYear}</td>
                 <td>{book.genre}</td>
+                <td>{book.bookDescription}</td>
+                <td>{book.bookPrice.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>

@@ -10,6 +10,8 @@ const AddBook = () => {
     const [author, setAuthor] = useState("");
     const [publicationYear, setPublicationYear] = useState(new Date());
     const [genre, setGenre] = useState("");
+    const [bookDescription, setBookDescription] = useState("");
+    const [bookPrice, setBookPrice] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
     const token = getToken();
@@ -29,6 +31,8 @@ const AddBook = () => {
                 author,
                 publicationYear: publicationYear.getFullYear(), // Send only the year
                 genre,
+                bookDescription,
+                bookPrice: parseFloat(bookPrice),
             };
 
             const response = await axios.post(
@@ -43,7 +47,7 @@ const AddBook = () => {
             );
 
             setMessage("Book added successfully!");
-            navigate("/admin-dashboard"); // Redirect to Admin Dashboard
+            navigate("/admin-dashboard");
         } catch (error) {
             console.error(error);
             setMessage("Failed to add book. Please try again.");
@@ -100,6 +104,28 @@ const AddBook = () => {
                         placeholder="Enter genre"
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="bookDescription">Description:</label>
+                    <textarea
+                        id="bookDescription"
+                        placeholder="Enter book description"
+                        value={bookDescription}
+                        onChange={(e) => setBookDescription(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="bookPrice">Price:</label>
+                    <input
+                        id="bookPrice"
+                        type="number"
+                        step="0.01"
+                        placeholder="Enter book price"
+                        value={bookPrice}
+                        onChange={(e) => setBookPrice(e.target.value)}
                         required
                     />
                 </div>
