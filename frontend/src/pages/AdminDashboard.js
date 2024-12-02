@@ -18,6 +18,7 @@ const AdminDashboard = () => {
       <div className="sidebar">
         <ul>
           <li onClick={() => navigate('/add-book')}>Add Book</li>
+          <li onClick={() => navigate('/book-list')}>Book List</li>
         </ul>
       </div>
     </div>
