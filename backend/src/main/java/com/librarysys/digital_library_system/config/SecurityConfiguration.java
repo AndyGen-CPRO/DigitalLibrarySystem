@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                 // Authorize requests
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to "/auth/**"
+                        .requestMatchers("/books/**").authenticated()
                         .anyRequest().authenticated()          // All other requests require authentication
                 )
 
