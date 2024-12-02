@@ -11,6 +11,8 @@ import { getToken, getRole, getLoggedUsername, removeToken, removeRole, removeLo
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AdminDashboard from './pages/AdminDashboard';
+import AddBook from './pages/AddBook';
 
 
 const App = () => {
@@ -61,6 +63,14 @@ const App = () => {
           <Route
             path="/browse-books"
             element={<BrowseBooks />}
+          />
+          <Route
+            path="/admin-dashboard"
+            element={<AdminDashboard />}
+          />
+          <Route
+            path="/add-book"
+            element={<AddBook />}
           />
           <Route path="/register" element={<Register />} />
           <Route
