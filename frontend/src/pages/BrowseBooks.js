@@ -1,27 +1,41 @@
-import React, { useEffect } from 'react';
-import '../styles/BrowseBooks.css'; 
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../styles/BrowseBooks.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { getToken } from '../utils/auth';
-
-const books = [
-  { title: "Java Programming", author: "Jen Can", rating: 5, image: "path/to/image1.jpg" },
-  { title: "Digital Marketing", author: "2q Press", rating: 4, image: "path/to/image2.jpg" },
-  { title: "Learn React", author: "Robert Smith", rating: 5, image: "path/to/image3.jpg" },
-  { title: "Digital Design", author: "John Snow", rating: 4, image: "path/to/image4.jpg" },
-  { title: "Artificial Intelligence", author: "Andy Cristiano", rating: 5, image: "path/to/image5.jpg" },
-  { title: "Information Technology", author: "Josh Parker", rating: 4, image: "path/to/image6.jpg" },
-];
 
 const BrowseBooks = () => {
   const navigate = useNavigate();
   const token = getToken();
+  const [serverBooks, setServerBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (!token) {
-      navigate("/");
+      navigate('/');
       return;
     }
-  })
+
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get('http://localhost:8081/books', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
+        setServerBooks(response.data);
+        setFilteredBooks(response.data);
+      } catch (error) {
+        console.error('Error fetching books:', error);
+        setMessage('Failed to fetch books. Please try again.');
+      }
+    };
+
+    fetchBooks();
+  }, [token, navigate]);
+
   return (
     <div className="browse-books">
       <div className="sidebar">
@@ -38,12 +52,19 @@ const BrowseBooks = () => {
       <div className="content">
         <h1>Browse Books</h1>
         <div className="books-grid">
-          {books.map((book, index) => (
+          {filteredBooks.map((book, index) => (
             <div key={index} className="book-card">
               <img src={book.image} alt={book.title} />
-              <h3>{book.title}</h3>
-              <p>by {book.author}</p>
-              <p>Rate: {"⭐".repeat(book.rating)}</p>
+              <Link
+                  to={`/book/${book.id}`}
+                  className="text-blue-600 hover:underline"
+              >
+                  {book.title}
+              </Link>
+              <p>{book.publicationYear}</p>
+              <p>Author: {book.author}</p>
+              <p>Genre: {book.genre}</p>
+              <p>CA${book.bookPrice}</p>
             </div>
           ))}
         </div>

@@ -16,17 +16,21 @@ public class Book {
     private String author;
     private int publicationYear;
     private String genre;
+    private String bookDescription;
+    private double bookPrice;
 
     // Default constructor (required by JPA)
     public Book() {
     }
 
     // Parameterized constructor
-    public Book(String title, String author, int publicationYear, String genre) {
+    public Book(String title, String author, int publicationYear, String genre, String bookDescription, double bookPrice) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.genre = genre;
+        this.bookDescription = bookDescription;
+        this.bookPrice = bookPrice;
     }
 
     // Getters and setters
@@ -58,9 +62,7 @@ public class Book {
         return publicationYear;
     }
 
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
-    }
+    public void setPublicationYear(int publicationYear) { this.publicationYear = publicationYear; }
 
     public String getGenre() {
         return genre;
@@ -68,5 +70,16 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getBookDescription() { return bookDescription; }
+
+    public void setBookDescription(String bookDescription) {
+        this.bookDescription = bookDescription;
+    }
+
+    public double getBookPrice() { return bookPrice; }
+
+    public void setBookPrice(double bookPrice) { this.bookPrice = bookPrice;
     }
 }

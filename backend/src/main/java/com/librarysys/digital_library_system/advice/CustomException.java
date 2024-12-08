@@ -43,4 +43,8 @@ public class CustomException extends RuntimeException {
     public static CustomException immutableBookId() {
         return new CustomException("Book IDs assigned to a rating can not be updated", "BOOK_ID_IMMUTABLE" );
     }
+
+    public static CustomException noRatingsForBook(Book book_id) {
+        return new CustomException("No ratings found for book ID: " + book_id, "BOOK_NO_RATING");
+    }
 }

@@ -2,8 +2,12 @@ package com.librarysys.digital_library_system.service;
 
 
 import com.librarysys.digital_library_system.advice.CustomException;
+import com.librarysys.digital_library_system.model.Book;
 import com.librarysys.digital_library_system.model.Rating;
+import com.librarysys.digital_library_system.model.User;
 import com.librarysys.digital_library_system.repository.RatingRepository;
+import com.librarysys.digital_library_system.repository.UserRepository;
+import com.librarysys.digital_library_system.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +20,12 @@ public class RatingService {
 
     @Autowired
     private RatingRepository ratingRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     private String getLoggedUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -31,11 +41,21 @@ public class RatingService {
         if (loggedUser == null) {
             throw CustomException.invalidUserId(loggedUser);
         }
-        rating.setId(Integer.valueOf(loggedUser));
+
+        User user = userRepository.findByUsername(loggedUser)
+                .orElseThrow(() -> new CustomException("User not found", "INVALID_USER"));
+
+        Book book = bookRepository.findById(rating.getBook().getId())
+                .orElseThrow(() -> new CustomException("Invalid book ID", "INVALID_BOOK"));
+
+        rating.setUser(user);
 
         if (rating.getBook() == null) {
             throw CustomException.invalidBookId(rating.getBook());
         }
+
+        rating.setBook(book);
+
         if (rating.getRating() < 0.5 || rating.getRating() > 5) {
             throw CustomException.invalidRating(rating.getRating());
         }
@@ -51,19 +71,41 @@ public class RatingService {
 
     public Rating getRatingById(Integer id) {
         return ratingRepository.findById(id)
-                .filter(rating -> {
-                    getLoggedUserId();
-                    return false;
-                })
                 .orElseThrow(() -> CustomException.ratingIdNotFound(id));
+    }
+
+    public List<Rating> getRatingByBook(Book book) {
+        if (book == null) {
+            throw CustomException.invalidBookId(book);
+        }
+        List<Rating> ratings = ratingRepository.findByBook(book);
+        if (ratings.isEmpty()) {
+            throw CustomException.noRatingsForBook(book);
+        }
+        return ratings;
+    }
+
+    public Rating getRatingByUserAndBook(Book book) {
+        String loggedUser = getLoggedUserId();
+
+        if (loggedUser == null) {
+            throw CustomException.invalidUserId(loggedUser);
+        }
+
+        User user = userRepository.findByUsername(loggedUser)
+                .orElseThrow(() -> new CustomException("User not found", "INVALID_USER"));
+
+        if (book == null) {
+            throw CustomException.invalidBookId(book);
+        }
+
+        Rating ratings = ratingRepository.findByUserAndBook(user, book);
+
+        return ratings;
     }
 
     public Rating updateRating(Integer id, Rating rating) {
         Rating existingRating = ratingRepository.findById(id)
-                .filter(r -> {
-                    getLoggedUserId();
-                    return false;
-                })
                 .orElseThrow(() -> CustomException.ratingIdNotFound(id));
 
         if(rating.getUser() != null && !rating.getUser().equals(existingRating.getUser())) {
@@ -77,6 +119,7 @@ public class RatingService {
         }
 
         existingRating.setRating(rating.getRating());
+        existingRating.setReview(rating.getReview());
         return ratingRepository.save(existingRating);
     }
 

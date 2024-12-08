@@ -7,10 +7,14 @@ import Login from './pages/Login';
 import BrowseBooks from './pages/BrowseBooks';
 import Profile from './pages/Profile';
 import Register from './pages/Registration'; 
+import BookDetails from './pages/BookDetails';
 import { getToken, getRole, getLoggedUsername, removeToken, removeRole, removeLoggedUsername } from './utils/auth';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AdminDashboard from './pages/AdminDashboard';
+import AddBook from './pages/AddBook';
+import BookList from './pages/BookList';
 
 
 const App = () => {
@@ -62,10 +66,29 @@ const App = () => {
             path="/browse-books"
             element={<BrowseBooks />}
           />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/admin-dashboard"
+            element={<AdminDashboard />}
+          />
+          <Route
+            path="/add-book"
+            element={<AddBook />}
+          />
+          <Route
+            path="/book-list"
+            element={<BookList />}
+          />
+          <Route 
+            path="/register" 
+            element={<Register />} 
+          />
           <Route
             path="/profile"
             element={<Profile />}
+          />
+          <Route 
+            path="/book/:id" 
+            element={<BookDetails />} 
           />
         </Routes>
       </div>
