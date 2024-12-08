@@ -1,9 +1,6 @@
 package com.librarysys.digital_library_system.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -16,6 +13,7 @@ public class Book {
     private String author;
     private int publicationYear;
     private String genre;
+    @Column(length = 1000)
     private String bookDescription;
     private double bookPrice;
 
