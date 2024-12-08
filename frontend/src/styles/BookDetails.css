@@ -20,9 +20,11 @@
 }
 
 .book-rating {
-  margin:10% auto;
+  margin:10% 1%;
   width: 30%;
   text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .modal-overlay {
@@ -114,4 +116,6 @@
 .reviews p {
   font-style: italic;
   color: whitesmoke;
+  white-space: normal;
+  word-wrap: break-word;
 }
