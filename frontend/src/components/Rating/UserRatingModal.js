@@ -92,7 +92,7 @@ const UserRating = ({ closeModal, fetchRatings, fetchRatingByUser, book, userRat
                     <h2>Read it? Rate it!</h2>
                     <form onSubmit={handleSubmit}>
                     <Rating 
-                        initialRating={userRatingData.rating} 
+                        initialRating={userRatingData?.rating || 1} 
                         fractions={2} 
                         emptySymbol={<IoStarOutline />}
                         fullSymbol={<IoStar />}

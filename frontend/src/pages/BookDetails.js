@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getToken } from '../utils/auth'
 import { useNavigate, useParams } from 'react-router-dom';
+import Rating from 'react-rating';
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
+import { IoStar, IoStarOutline } from 'react-icons/io5';
+import { VscBlank } from "react-icons/vsc";
 import UserRating from '../components/Rating/UserRatingModal';
 
 const BookDetails = () => {
@@ -75,49 +79,81 @@ const BookDetails = () => {
     }
 
     return (
-        <div className='book-detail'>
-            <div>
+        <div className='book-page'>
+            <div  className='book-detail'>
                 <h1>{book.title}</h1>
-                <h3>Author: {book.author}</h3>
-                <h4>Year: {book.publicationYear}</h4>
-                <h4>Description</h4>
+                <h3>{book.author}</h3>
+                <p>{book.publicationYear}</p>
+                <h5>Description</h5>
                 <p>{book.bookDescription}</p>
-                <h4>Price: {book.bookPrice}</h4>
+                <h5>${parseFloat(book.bookPrice).toFixed(2)}</h5>
             </div>
-            {ratings.map((rating) => (
-                <>
-                    {rating.review && 
+            <div className="book-rating-review">
+                <div className="book-rating">
+                {userRatingData ? (
                     <div>
-                        <h3>{rating.user.username}</h3>
-                        <p>{rating.review}</p>
+                        <h3>Your Rating</h3>
+                        <div>
+                            <Rating 
+                                className="review-rating"
+                                initialRating={userRatingData.rating} 
+                                fractions={2} 
+                                emptySymbol={<IoStarOutline />}
+                                fullSymbol={<IoStar />}
+                                readonly
+                            />
+                        </div>
+                        <p>{userRatingData.rating}</p>
+                        <p>posted on: {userRatingData.date}</p>
+                        <p>{userRatingData.review}</p>
+                        <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("edit")}}>Edit Rating</button>
                     </div>
-                    }
-                </>
-            )
-            )}
-            {userRatingData ? (
-                <div>
-                    <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("edit")}}>Edit Rating</button>
+                    ) : (
+                    <div>
+                        <p>Read it? Rate it!</p>
+                        <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("create")}}>Add Rating</button>
+                    </div>
+                )}
                 </div>
-                ) : (
-                <div>
-                    <p>User has no rating.</p>
-                    <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("create")}}>Add Rating</button>
+                <div className="reviews">
+                    <h2>Reviews</h2>
+                    {ratings.map((rating) => (
+                        <>
+                            {rating.review && 
+                            <li className="review-list"  key={rating.id}>
+                            <p><b>{rating.user.username}</b> · {rating.date}</p>
+                            <div>
+                                <Rating 
+                                className="review-rating"
+                                initialRating={rating.rating} 
+                                fractions={2} 
+                                emptySymbol={<IoStarOutline />}
+                                fullSymbol={<IoStar />}
+                                readonly
+                                />
+                            </div>
+                            <p>{rating.review}</p>
+
+                        </li>
+                            }
+                        </>
+                    )
+                    )}
                 </div>
-            )}
-            
-            {userRatingModal &&
-            <UserRating 
-                closeModal={() => setUserRatingModal(false)}
-                fetchRatings={fetchRatings}
-                fetchRatingByUser={fetchRatingByUser}
-                book={book}
-                userRatingData={userRatingData}
-                token={token}
-                createOrEdit={createOrEdit}
-            />
-            }
-        </div>  
+
+                {userRatingModal &&
+                <UserRating 
+                    closeModal={() => setUserRatingModal(false)}
+                    fetchRatings={fetchRatings}
+                    fetchRatingByUser={fetchRatingByUser}
+                    book={book}
+                    userRatingData={userRatingData}
+                    token={token}
+                    createOrEdit={createOrEdit}
+                />
+                }
+            </div>  
+        </div>
     )
 }
 

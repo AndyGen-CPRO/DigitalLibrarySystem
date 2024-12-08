@@ -79,9 +79,6 @@ public class RatingService {
             throw CustomException.invalidBookId(book);
         }
         List<Rating> ratings = ratingRepository.findByBook(book);
-        if (ratings.isEmpty()) {
-            throw CustomException.noRatingsForBook(book);
-        }
         return ratings;
     }
 

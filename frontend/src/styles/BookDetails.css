@@ -1,68 +1,117 @@
+.book-page {
+  color:rgb(224, 180, 91);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .book-detail {
-    color:rgb(224, 180, 91);
+  text-align: left;
+  margin: 3% 20%;
+}
+
+.book-detail h1, h3, h4 {
+  font-style: italic;
+  text-shadow: -1px -1px 0  black, 1px -1px 0  black, -1px 1px 0  black, 1px 1px 0  black
+}
+
+.book-rating-review {
+  border-top: 1px solid rgb(224, 180, 91);
+  display: flex;
+  padding-top: 1%;
+}
+
+.book-rating {
+  margin:10% auto;
+  width: 30%;
+  text-align: center;
 }
 
 .modal-overlay {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    background: rgba(49,49,49,0.8)
-  }
-  .modal-content {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
-    z-index: 1;
-  }
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(49,49,49,0.8)
+}
+.modal-content {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 1;
+}
 
-  .modal-content h2 {
-    color: black;
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 0px 10px;
-    border: 0;
-    cursor: pointer;
-    font-size: 30px;
-    background: rgb(221, 221, 228);
-  }
-  
-  .close-modal:hover {
-    background: rgb(215, 216, 222);
-  }
-  
-  .review-field {
-    width: 500px;
-    height: 100px;
-    resize: none;
-    line-height: 20px;
-    padding: 5px;
-    margin-top: 10px;
-  }
+.modal-content h2 {
+  color: black;
+}
 
-  .rating-config-btn {
-    background: rgb(221, 221, 228);
-    border: none;
-    font-size: 100%;
-    padding: 8px;
-    border-radius: 10px;
-  }
-  
-  .rating-config-btn:hover {
-    background: rgb(215, 216, 222);
-  }
-  
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0px 10px;
+  border: 0;
+  cursor: pointer;
+  font-size: 30px;
+  background: rgb(221, 221, 228);
+}
+
+.close-modal:hover {
+  background: rgb(215, 216, 222);
+}
+
+.review-field {
+  width: 500px;
+  height: 100px;
+  resize: none;
+  line-height: 20px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.rating-config-btn {
+  background: rgb(221, 221, 228);
+  border: none;
+  font-size: 100%;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.rating-config-btn:hover {
+  background: rgb(215, 216, 222);
+}
+
+.review-list {
+  list-style: none;
+  border-bottom: 1px solid rgb(224, 180, 91);
+  padding: 10px 0px;
+}
+
+.reviews {
+  text-align: left;
+  width: 65%;
+  margin-right: 5%;
+  border-left: 1px solid rgb(224, 180, 91);
+  padding-left: 1%;
+}
+
+.reviews h2 {
+  font-style: italic;
+  font-size: 36px;
+  color: rgb(202, 82, 200) ;
+  text-shadow: -1px -1px 0  rgb(104, 12, 104)
+}
+
+.reviews p {
+  font-style: italic;
+  color: whitesmoke;
+}
