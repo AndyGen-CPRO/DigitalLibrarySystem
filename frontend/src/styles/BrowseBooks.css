@@ -1,7 +1,7 @@
 .browse-books {
     display: flex;
-    color: #2D1737;
-    background-color: #FFFFFF;
+    color: #b19abb;
+    background-color: #952990;
     height: 100vh;
   }
   
@@ -30,11 +30,13 @@
   .content {
     width: 80%;
     padding: 2rem;
+    background-color: #471345;
   }
   
   .content h1 {
     margin-bottom: 2rem;
     text-align: center;
+    color:#F5C81A;
   }
   
   .books-grid {
@@ -66,5 +68,9 @@
   .book-card p {
     margin: 0.5rem 0;
     font-size: 0.9rem;
+  }
+
+  .books-grid p {
+    color: rgb(196, 67, 181);
   }
   

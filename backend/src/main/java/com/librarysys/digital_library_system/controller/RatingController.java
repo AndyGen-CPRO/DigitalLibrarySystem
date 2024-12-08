@@ -1,5 +1,6 @@
 package com.librarysys.digital_library_system.controller;
 
+import com.librarysys.digital_library_system.model.Book;
 import com.librarysys.digital_library_system.model.Rating;
 import com.librarysys.digital_library_system.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,22 @@ public class RatingController {
     @GetMapping("/{id}")
     public Rating getRatingById(@PathVariable Integer id) {
         return ratingService.getRatingById(id);
+    }
+
+    @GetMapping("book/{bookId}")
+    public List<Rating> getRatingsByBook(@PathVariable Integer bookId) {
+        Book book = new Book();
+        book.setId(bookId);
+
+        return ratingService.getRatingByBook(book);
+    }
+
+    @GetMapping("user/book/{bookId}")
+    public Rating getRatingsByUserAndBook(@PathVariable Integer bookId) {
+        Book book = new Book();
+        book.setId(bookId);
+
+        return ratingService.getRatingByUserAndBook(book);
     }
 
     @PutMapping("/{id}")

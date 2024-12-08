@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/BrowseBooks.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getToken } from '../utils/auth';
 
 const BrowseBooks = () => {
@@ -55,9 +55,16 @@ const BrowseBooks = () => {
           {filteredBooks.map((book, index) => (
             <div key={index} className="book-card">
               <img src={book.image} alt={book.title} />
-              <h3>{book.title}</h3>
-              <p>by {book.author}</p>
-              <p>Rate: {"⭐".repeat(book.rating)}</p>
+              <Link
+                  to={`/book/${book.id}`}
+                  className="text-blue-600 hover:underline"
+              >
+                  {book.title}
+              </Link>
+              <p>{book.publicationYear}</p>
+              <p>Author: {book.author}</p>
+              <p>Genre: {book.genre}</p>
+              <p>CA${book.bookPrice}</p>
             </div>
           ))}
         </div>
