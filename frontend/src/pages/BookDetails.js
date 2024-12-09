@@ -8,6 +8,7 @@ import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { IoStar, IoStarOutline } from 'react-icons/io5';
 import { VscBlank } from "react-icons/vsc";
 import UserRating from '../components/Rating/UserRatingModal';
+import RatingEngagement from '../components/Rating/RatingEngagementModal';
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -16,6 +17,8 @@ const BookDetails = () => {
     const [userRatingData, setUserRatingData] = useState(null);
     const [message, setMessage] = useState("");
     const [userRatingModal, setUserRatingModal] = useState(false);
+    const [ratingEngagementModal, setRatingEngagementModal] = useState(false);
+    const [selectedRating, setSelectedRating] = useState(null);
     const [createOrEdit, setCreateOrEdit] = useState("");
     const token = getToken();
     const navigate = useNavigate();
@@ -84,6 +87,7 @@ const BookDetails = () => {
                 <h1>{book.title}</h1>
                 <h3>{book.author}</h3>
                 <p>{book.publicationYear}</p>
+                <p>Genre: <i>{book.genre}</i></p>
                 <h5>Description</h5>
                 <p>{book.bookDescription}</p>
                 <h5>${parseFloat(book.bookPrice).toFixed(2)}</h5>
@@ -133,7 +137,7 @@ const BookDetails = () => {
                                 />
                             </div>
                             <p>{rating.review}</p>
-
+                            <button onClick={() => {setSelectedRating(rating); setRatingEngagementModal(true)}}>See Engagements</button>
                         </li>
                             }
                         </>
@@ -150,6 +154,14 @@ const BookDetails = () => {
                     userRatingData={userRatingData}
                     token={token}
                     createOrEdit={createOrEdit}
+                />
+                }
+
+                {ratingEngagementModal &&
+                <RatingEngagement 
+                    closeModal={() => setRatingEngagementModal(false)}
+                    rating={selectedRating}
+                    token={token}
                 />
                 }
             </div>  

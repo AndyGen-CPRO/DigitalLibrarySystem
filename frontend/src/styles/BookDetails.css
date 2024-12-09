@@ -13,6 +13,10 @@
   text-shadow: -1px -1px 0  black, 1px -1px 0  black, -1px 1px 0  black, 1px 1px 0  black
 }
 
+.book-detail p {
+  color: whitesmoke;
+}
+
 .book-rating-review {
   border-top: 1px solid rgb(224, 180, 91);
   display: flex;
@@ -44,7 +48,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
+  background: #971b82;
   padding: 14px 28px;
   border-radius: 3px;
   max-width: 600px;
@@ -55,6 +59,11 @@
 .modal-content h2 {
   color: black;
 }
+
+.modal-content p {
+  margin: 2%;
+}
+
 
 .close-modal {
   position: absolute;
@@ -86,6 +95,7 @@
   font-size: 100%;
   padding: 8px;
   border-radius: 10px;
+  margin: 1%;
 }
 
 .rating-config-btn:hover {
@@ -118,4 +128,29 @@
   color: whitesmoke;
   white-space: normal;
   word-wrap: break-word;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  font-size: 100%;
+  width:40%;
+  margin: auto;
+}
+
+.like-btn:hover {
+  text-decoration: underline;
+}
+
+.like-list {
+  text-align: left;
+  margin: 20px auto;
+  list-style: none;
+  width: 40%;  
+  max-width: 500px;
+  border: 1px solid #ccc;  
+  border-radius: 8px;  
+  background-color: #371233; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
 }

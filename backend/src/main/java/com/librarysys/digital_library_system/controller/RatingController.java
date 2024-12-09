@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/rating")
@@ -39,7 +40,7 @@ public class RatingController {
     }
 
     @GetMapping("user/book/{bookId}")
-    public Rating getRatingsByUserAndBook(@PathVariable Integer bookId) {
+    public Optional<Rating> getRatingsByUserAndBook(@PathVariable Integer bookId) {
         Book book = new Book();
         book.setId(bookId);
 
