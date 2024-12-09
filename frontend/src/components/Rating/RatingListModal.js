@@ -7,11 +7,11 @@ const RatingList = ({ closeModal, book, ratings }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
+                <div>
+                    <button className="close-modal" onClick={closeModal}>&times;</button>
+                </div>   
                 {ratings.length > 0 ? (
                 <div>
-                    <div>
-                        <button className="close-modal" onClick={closeModal}>&times;</button>
-                    </div>   
                     <div className="modal-inner">
                         <h2>{book.title} Ratings</h2>
                         <table className="ratings-table">

@@ -54,7 +54,6 @@ const BrowseBooks = () => {
         <div className="books-grid">
           {filteredBooks.map((book, index) => (
             <div key={index} className="book-card">
-              <img src={book.image} alt={book.title} />
               <Link
                   to={`/book/${book.id}`}
                   className="text-blue-600 hover:underline"
