@@ -120,12 +120,10 @@ public class RatingService {
     }
 
     public void deleteRating(Integer id) {
+        //looks for rating likes and deletes them before deleting the rating itself
         List<RatingLike> ratingLike = ratingLikeRepository.findByRating(getRatingById(id));
 
-        for (RatingLike like : ratingLike) {
-            like.setRating(null);
-            ratingLikeRepository.save(like);
-        }
+        ratingLikeRepository.deleteAll(ratingLike);
 
         ratingRepository.deleteById(id);
     }

@@ -92,48 +92,52 @@ const RatingEngagement = ({ closeModal, rating, token }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <div>
-                    <h2>Review by {rating.user.username}</h2>
                     <button className="close-modal" onClick={closeModal}>&times;</button>
                 </div>
-                {userLikeData ? (
-                    <button className='like-btn' onClick={handleToggleLike}>
-                        {userLikeData?.liked ? (
-                        <>
-                            <AiFillLike />
-                            <span>Unlike</span>   
-                        </>
-                     ) : (
-                        <>
-                            <AiOutlineLike />
-                            <span>Like the Review</span>
-                        </>
-                     )}
-                    </button>
-                ) : (
-                    <button onClick={handleLike}>
-                        <>
-                            <AiOutlineLike />
-                            <span>Like the Review</span>
-                        </>
-                    </button>
-                )}
-                {ratingLikesCount ? (
-                    <div>
-                        <p>Likes: {ratingLikesCount}</p>
-                        <p>Liked by:</p>
-                        <ul className="like-list">
-                            {ratingLikes.map((like) => 
-                                like.liked === true && (
-                                    <li key={like.id}>
-                                        {like.user.username}
-                                    </li>
-                                )
-                            )}
-                        </ul>
-                    </div>
-                ) : (
-                    <p>This review has not been liked by anyone yet.</p>
-                )}
+                <div className="modal-inner">
+                    <h2><u>{rating.user.username}</u>'s Review Engagements</h2>
+                    {userLikeData ? (
+                        <button className='like-btn' onClick={handleToggleLike}>
+                            {userLikeData?.liked ? (
+                            <>
+                                <AiFillLike />
+                                <span>Unlike</span>   
+                            </>
+                        ) : (
+                            <>
+                                <AiOutlineLike />
+                                <span>Like the Review</span>
+                            </>
+                        )}
+                        </button>
+                    ) : (
+                        <button className='like-btn' onClick={handleLike}>
+                            <>
+                                <AiOutlineLike />
+                                <span>Like the Review</span>
+                            </>
+                        </button>
+                    )}
+                    {ratingLikesCount ? (
+                        <div>
+                            <p>{ratingLikesCount} Likes</p>
+                            <div className="rating-likes">
+                                <p>Liked By:</p>
+                                <ul>
+                                    {ratingLikes.map((like) => 
+                                        like.liked === true && (
+                                            <li className="like-list" key={like.id}>
+                                                {like.user.username}
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
+                    ) : (
+                        <p>This review has not been liked by anyone yet.</p>
+                    )}
+                </div>
             </div>
         </div>
     )

@@ -13,12 +13,17 @@
   text-shadow: -1px -1px 0  black, 1px -1px 0  black, -1px 1px 0  black, 1px 1px 0  black
 }
 
-.book-detail p {
-  color: whitesmoke;
+.book-detail h1 {
+  background-color: rgb(140, 52, 140);
+  padding: 5px;
 }
 
-.book-rating-review {
-  border-top: 1px solid rgb(224, 180, 91);
+.book-detail p {
+  color: rgb(224, 208, 218);
+}
+
+.rating-review-area {
+  border-top: 1px solid rgb(202, 82, 200);
   display: flex;
   padding-top: 1%;
 }
@@ -29,6 +34,23 @@
   text-align: center;
   white-space: normal;
   word-wrap: break-word;
+}
+
+.book-rating h3, h5 {
+  color:rgb(202, 82, 200);
+  margin-top:4%;
+}
+
+.book-rating p {
+  color:rgb(224, 208, 218);
+  margin-top:4%;
+}
+
+.user-review {
+  border-radius: 8px;
+  text-align: left;
+  background-color: rgb(107, 61, 107);
+  padding: 10px;
 }
 
 .modal-overlay {
@@ -57,7 +79,7 @@
 }
 
 .modal-content h2 {
-  color: black;
+  color: rgb(224, 208, 218);
 }
 
 .modal-content p {
@@ -104,7 +126,7 @@
 
 .review-list {
   list-style: none;
-  border-bottom: 1px solid rgb(224, 180, 91);
+  border-bottom: 1px solid rgb(202, 82, 200);
   padding: 10px 0px;
 }
 
@@ -112,20 +134,23 @@
   text-align: left;
   width: 65%;
   margin-right: 5%;
-  border-left: 1px solid rgb(224, 180, 91);
+  border-left: 1px solid rgb(202, 82, 200);
+  border-right: 1px solid rgb(202, 82, 200);
   padding-left: 1%;
 }
 
 .reviews h2 {
   font-style: italic;
   font-size: 36px;
-  color: rgb(202, 82, 200) ;
-  text-shadow: -1px -1px 0  rgb(104, 12, 104)
+  color: rgb(202, 82, 200);
+  text-shadow: -1px -1px 0  rgb(104, 12, 104);
+  border-bottom: 2px solid rgb(202, 82, 200);
+  padding: 5px;
 }
 
 .reviews p {
   font-style: italic;
-  color: whitesmoke;
+  color: rgb(224, 208, 218);
   white-space: normal;
   word-wrap: break-word;
 }
@@ -143,7 +168,7 @@
 }
 
 .like-list {
-  text-align: left;
+  text-align: center;
   margin: 20px auto;
   list-style: none;
   width: 40%;  
@@ -153,4 +178,33 @@
   background-color: #371233; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
+}
+
+
+.ratings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.ratings-table thead {
+  background-color: rgb(224, 180, 91);
+  color:#371233
+}
+
+.ratings-table tr:nth-child(even) {
+  background-color: #371233;
+}
+
+.modal-inner {
+  width:95%;
+  margin:auto;
+}
+
+.prev-page-btn {
+  text-align: left;
+}
+
+.rating-likes {
+  border-top: 2px solid rgb(202, 82, 200);
 }

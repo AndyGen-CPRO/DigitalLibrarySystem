@@ -9,6 +9,7 @@ import { IoStar, IoStarOutline } from 'react-icons/io5';
 import { VscBlank } from "react-icons/vsc";
 import UserRating from '../components/Rating/UserRatingModal';
 import RatingEngagement from '../components/Rating/RatingEngagementModal';
+import RatingList from '../components/Rating/RatingListModal';
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -18,6 +19,7 @@ const BookDetails = () => {
     const [message, setMessage] = useState("");
     const [userRatingModal, setUserRatingModal] = useState(false);
     const [ratingEngagementModal, setRatingEngagementModal] = useState(false);
+    const [ratingListModal, setRatingListModal] = useState(false);
     const [selectedRating, setSelectedRating] = useState(null);
     const [createOrEdit, setCreateOrEdit] = useState("");
     const token = getToken();
@@ -75,6 +77,10 @@ const BookDetails = () => {
         }
     }
 
+    const previosPage = () => {
+        navigate("/browse-books");
+    }
+
     if (!book) {
         return (
             <p>Book Loading...</p>
@@ -83,6 +89,9 @@ const BookDetails = () => {
 
     return (
         <div className='book-page'>
+            <div className="prev-page-btn">
+                <button onClick={previosPage}>Browse Books</button>
+            </div>
             <div  className='book-detail'>
                 <h1>{book.title}</h1>
                 <h3>{book.author}</h3>
@@ -92,32 +101,34 @@ const BookDetails = () => {
                 <p>{book.bookDescription}</p>
                 <h5>${parseFloat(book.bookPrice).toFixed(2)}</h5>
             </div>
-            <div className="book-rating-review">
+            <div className="rating-review-area">
                 <div className="book-rating">
-                {userRatingData ? (
-                    <div>
-                        <h3>Your Rating</h3>
+                    <button onClick={() => setRatingListModal(true)}>See All Ratings</button>
+                    {userRatingData ? (
                         <div>
-                            <Rating 
-                                className="review-rating"
-                                initialRating={userRatingData.rating} 
-                                fractions={2} 
-                                emptySymbol={<IoStarOutline />}
-                                fullSymbol={<IoStar />}
-                                readonly
-                            />
+                            <h3>Your Rating</h3>
+                            <div>
+                                <Rating 
+                                    className="review-rating"
+                                    initialRating={userRatingData.rating} 
+                                    fractions={2} 
+                                    emptySymbol={<IoStarOutline />}
+                                    fullSymbol={<IoStar />}
+                                    readonly
+                                />
+                            </div>
+                            <p>{userRatingData.rating}</p>
+                            <p>{userRatingData.date}</p>
+                            <h5>Review</h5>
+                            <p className='user-review'>{userRatingData.review}</p>
+                            <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("edit")}}>Edit Rating</button>
                         </div>
-                        <p>{userRatingData.rating}</p>
-                        <p>posted on: {userRatingData.date}</p>
-                        <p>{userRatingData.review}</p>
-                        <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("edit")}}>Edit Rating</button>
-                    </div>
-                    ) : (
-                    <div>
-                        <p>Read it? Rate it!</p>
-                        <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("create")}}>Add Rating</button>
-                    </div>
-                )}
+                        ) : (
+                        <div>
+                            <p>Read it? Rate it!</p>
+                            <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("create")}}>Add Rating</button>
+                        </div>
+                    )}
                 </div>
                 <div className="reviews">
                     <h2>Reviews</h2>
@@ -162,6 +173,14 @@ const BookDetails = () => {
                     closeModal={() => setRatingEngagementModal(false)}
                     rating={selectedRating}
                     token={token}
+                />
+                }
+
+                {ratingListModal &&
+                <RatingList 
+                    closeModal={() => setRatingListModal(false)}
+                    book={book}
+                    ratings={ratings}
                 />
                 }
             </div>  
