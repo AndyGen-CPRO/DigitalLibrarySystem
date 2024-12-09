@@ -119,8 +119,12 @@ const BookDetails = () => {
                             </div>
                             <p>{userRatingData.rating}</p>
                             <p>{userRatingData.date}</p>
-                            <h5>Review</h5>
-                            <p className='user-review'>{userRatingData.review}</p>
+                            {userRatingData.review &&
+                            <>
+                                <h5>Review</h5>
+                                <p className='user-review'>{userRatingData.review}</p>
+                            </>
+                            }
                             <button onClick={() => {setUserRatingModal(true); setCreateOrEdit("edit")}}>Edit Rating</button>
                         </div>
                         ) : (
